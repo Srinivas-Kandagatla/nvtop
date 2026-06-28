@@ -1748,6 +1748,16 @@ void save_current_data_to_ring(struct list_head *devices, struct nvtop_interface
             data_val = device->dynamic_info.effective_load_rate;
           }
           break;
+        case plot_hvx_util_rate:
+          if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, hvx_util_rate)) {
+            data_val = device->dynamic_info.hvx_util_rate;
+          }
+          break;
+        case plot_hmx_util_rate:
+          if (GPUINFO_DYNAMIC_FIELD_VALID(&device->dynamic_info, hmx_util_rate)) {
+            data_val = device->dynamic_info.hmx_util_rate;
+          }
+          break;
         case plot_information_count:
           break;
         }
@@ -1819,6 +1829,12 @@ static unsigned populate_plot_data_from_ring_buffer(struct list_head *devices,
           break;
         case plot_effective_load_rate:
           snprintf(plot_legend[in_processing], PLOT_MAX_LEGEND_SIZE, "%s%u eff. load%%", unit, dev_id);
+          break;
+        case plot_hvx_util_rate:
+          snprintf(plot_legend[in_processing], PLOT_MAX_LEGEND_SIZE, "HVX %%");
+          break;
+        case plot_hmx_util_rate:
+          snprintf(plot_legend[in_processing], PLOT_MAX_LEGEND_SIZE, "HMX %%");
           break;
         case plot_information_count:
           break;
