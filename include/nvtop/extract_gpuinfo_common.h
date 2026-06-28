@@ -212,6 +212,7 @@ struct gpu_vendor {
 
   void (*refresh_running_processes)(struct gpu_info *gpu_info);
   char *name;
+  const char *unit_name; // Short label for the compute unit (e.g. "GPU", "NPU"); NULL defaults to "GPU"
 };
 
 #define PDEV_LEN 16
